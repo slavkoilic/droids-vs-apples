@@ -24,6 +24,28 @@ public class Sprite {
 		texture = t;
 	}
 	
+	public boolean isClicked(int x, int y)
+	{
+		if ( x >= this.x && y >= this.y && x <= this.x + this.dWidth && y <= this.y + this.dHeight )
+			return true;
+		return false;
+	}
+	
+	public void onClick()
+	{
+		
+	}
+	
+	public Animation getAnimation()
+	{
+		return animation;
+	}
+	
+	public Texture getTexture()
+	{
+		return texture;
+	}
+	
 	public void render(SpriteBatch s)
 	{
 		Rectangle source = animation.getSource();
