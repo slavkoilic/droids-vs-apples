@@ -1,36 +1,33 @@
 package com.shadygames.droidsvsapples;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.Mesh;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.VertexAttribute;
-import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.shadygames.droidsvsapples.screenmanager.ScreenManager;
+import com.shadygames.droidsvsapples.screenmanager.screens.ScreenLoading;
 
 public class DroidsVsApples implements ApplicationListener {
-        
-        private Texture loadingScreen;
-        private SpriteBatch spriteBatch;
+	private ScreenManager screenMan = null;
+	private SpriteBatch spriteBatch = null;
         @Override
         public void create() {
-                loadingScreen = new Texture(Gdx.files.internal("Images/LoadingScreen512x512.png"));
-                spriteBatch = new SpriteBatch();
+        	spriteBatch = new SpriteBatch();
+        	screenMan = new ScreenManager(spriteBatch);
+        	screenMan.addScreen(new ScreenLoading());
         }
 
         @Override
-        public void dispose() { }
+        public void dispose() {
+        	
+        }
 
         @Override
-        public void pause() { }
+        public void pause() {
+        	screenMan.pause();
+        }
 
         @Override
         public void render() {
-                Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-                spriteBatch.begin();
-                spriteBatch.draw(loadingScreen, 0,0,Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),0,0,480,320,false,false);
-                spriteBatch.end();
+        	screenMan.render();
         }
 
         @Override
@@ -39,5 +36,7 @@ public class DroidsVsApples implements ApplicationListener {
         }
 
         @Override
-        public void resume() { }
+        public void resume() {
+        	screenMan.resume();
+        }
 }
