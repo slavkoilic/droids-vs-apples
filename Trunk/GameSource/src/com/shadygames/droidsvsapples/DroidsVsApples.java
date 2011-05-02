@@ -27,6 +27,7 @@ public class DroidsVsApples implements ApplicationListener {
 
         @Override
         public void render() {
+        	screenMan.update();
         	screenMan.render();
         }
 
