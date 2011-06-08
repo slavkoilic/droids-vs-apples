@@ -1,9 +1,9 @@
-#summary One-sentence summary of this page.
+#summary Droids Vs Apples - Android Game home page.
 #labels Featured,Phase-Requirements
 
 = Introduction =
 
-Droids Vs Apples - Android Game home page.
+Droids Vs Apples is a 100% open source project which provides a unique gaming experience for Android 2.2+ phones.
 
 
 = Details =
