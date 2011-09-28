@@ -16,6 +16,8 @@ public class ScreenManager {
 	
 	public static final int deviceWidth = 480;
 	public static final int deviceHeight = 320;
+	public static float screenXRatio = 1.0f;
+	public static float screenYRatio = 1.0f;
 	public static ScreenManager currentScreenManager = null;
 	
 	public static BitmapFont defaultFont = null;
@@ -25,10 +27,12 @@ public class ScreenManager {
 		spriteBatch = sBatch;
 		if ( defaultFont == null )
 		{
-			defaultFont = new BitmapFont(Gdx.files.internal("Font/chancery.fnt"),false);
+			defaultFont = new BitmapFont(Gdx.files.internal("Font/chancery.fnt"),Gdx.files.internal("Font/chancery_0.png"),false);
 			defaultFont.setColor(1.0f,.2f,.2f,1.0f);
-			defaultFont.setScale(1.2f);
+			defaultFont.setScale(1.1f);
 		}
+		screenXRatio = (float)deviceWidth / Gdx.graphics.getWidth();
+		screenYRatio = (float)deviceHeight / Gdx.graphics.getHeight();
 	}
 	
 	public void addScreen(Screen s)
@@ -64,7 +68,7 @@ public class ScreenManager {
 	private void handleInput()
 	{
 		if ( Gdx.app.getInput().justTouched() )
-			screens.lastElement().handleClick(Gdx.input.getX(), deviceHeight-Gdx.input.getY());
+			screens.lastElement().handleClick((int)(Gdx.input.getX()*screenXRatio), (int)(deviceHeight-Gdx.input.getY()*screenYRatio));
 	}
 	
 	public void update(){

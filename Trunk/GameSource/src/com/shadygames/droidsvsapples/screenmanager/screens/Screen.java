@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.shadygames.droidsvsapples.screenmanager.ScreenManager;
 import com.shadygames.droidsvsapples.sprites.Sprite;
 
 public abstract class Screen {
@@ -15,13 +16,16 @@ public abstract class Screen {
 	
 	protected Array<Sprite> sprites = new Array<Sprite>();
 	
-	public Screen(){
+	protected ScreenManager manager;
+	
+	public Screen(ScreenManager creater){
+		manager = creater;
 		lastTimeUpdate = System.currentTimeMillis();
 	}
 	
 	public void setBackground(Rectangle source, String texLoc)
 	{
-		addSprite(source,new Rectangle(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight()),texLoc);
+		addSprite(source,new Rectangle(0,0,ScreenManager.deviceWidth,ScreenManager.deviceHeight),texLoc);
 	}
 	
 	public void addSprite(Rectangle source, Rectangle dest, String texLoc, int animationRefresh)

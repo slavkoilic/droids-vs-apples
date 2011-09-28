@@ -6,8 +6,10 @@ import com.shadygames.droidsvsapples.screenmanager.screens.components.MenuButton
 
 public class MenuScreen extends Screen implements MenuInterface {
 
-	public MenuScreen()
+	public MenuScreen(ScreenManager screenMan)
 	{
+		super(screenMan);
+		
 		setBackground(new Rectangle(0,0,ScreenManager.deviceWidth,ScreenManager.deviceHeight),"Images/paper_background.png");
 		
 		int desiredWidth = 350;
@@ -21,7 +23,15 @@ public class MenuScreen extends Screen implements MenuInterface {
 	@Override
 	public void onMenuSelect(int index) {
 		// TODO Auto-generated method stub
-		System.err.println(index);
+		switch ( index )
+		{
+		case 0:
+			manager.closeAndAdd(new LoadGameScreen(manager));
+			break;
+		case 3:
+			System.exit(0);
+			break;
+		}
 	}
 	
 	@Override

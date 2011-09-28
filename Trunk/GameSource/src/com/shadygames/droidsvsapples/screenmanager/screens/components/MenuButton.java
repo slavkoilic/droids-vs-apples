@@ -47,10 +47,16 @@ public class MenuButton extends Sprite {
 	public void render(SpriteBatch s)
 	{
 		super.render(s);
-		ScreenManager.defaultFont.setColor(0.0f,1.0f,1.0f,0.7f);
-		ScreenManager.defaultFont.draw(s, text, textLoc.x+2, textLoc.y+2);
-		ScreenManager.defaultFont.setColor(1.0f,0.0f,0.0f,1.0f);
-		ScreenManager.defaultFont.draw(s,text,textLoc.x,textLoc.y);
+		ScreenManager.defaultFont.setColor(0.0f,0.0f,0.0f,0.5f);
+		if ( !clicked )
+			ScreenManager.defaultFont.draw(s, text, textLoc.x+2, textLoc.y+2);
+		else
+			ScreenManager.defaultFont.draw(s, text, textLoc.x+6, textLoc.y+2);
+		ScreenManager.defaultFont.setColor(0.8784f,0.698f,0.106f,1.0f);
+		if ( !clicked )
+			ScreenManager.defaultFont.draw(s,text,textLoc.x,textLoc.y);
+		else
+			ScreenManager.defaultFont.draw(s,text,textLoc.x+4,textLoc.y);
 	}
 	
 	public void doClick(){

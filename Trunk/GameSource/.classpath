@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="C:/Data/libgdx/gdx.jar"/>
 	<classpathentry kind="lib" path="C:/Data/libgdx/gdx-natives.jar" sourcepath="C:/Data/libgdx/gdx-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Data/libgdx/gdx-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Data/AndroidGame/libraries/google-gson-1.7.1/gson-1.7.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
