@@ -5,13 +5,35 @@ import com.shadygames.droidsvsapples.webservices.backend.WebService.CallbackFunc
 import com.shadygames.droidsvsapples.webservices.backend.WebService.HTTPType;
 
 public class ClientLoginManager {
-	public static void AttemptLogin(LoginRequest request, CallbackFunction<LoginResponse> callback)
+	
+	/**
+	 * Publicly accessible function for logging in
+	 * @param username
+	 * @param password
+	 * @param callback
+	 */
+	public static void AttemptLogin(String username, String password, CallbackFunction<LoginResponse> callback)
 	{
-		LoginCallback businessCallback = new ClientLoginManager(). new LoginCallback(callback);
-		WebService.SendAsync(businessCallback, HTTPType.Post, "droids/api/login", request);
+		AttemptLogin(new LoginRequest(username, password), callback);
 	}
 	
-	public class LoginCallback implements CallbackFunction<LoginResponse>
+	/**
+	 * Private login method
+	 * @param request
+	 * @param callback
+	 */
+	private static void AttemptLogin(LoginRequest request, CallbackFunction<LoginResponse> callback)
+	{
+		LoginCallback businessCallback = new ClientLoginManager(). new LoginCallback(callback);
+		WebService.SendAsync(businessCallback, HTTPType.Post, "api/testlogin", request, LoginResponse.class);
+	}
+	
+	/**
+	 * The class that handles callbacks for login response.
+	 * @author Travis
+	 *
+	 */
+	private class LoginCallback implements CallbackFunction<LoginResponse>
 	{
 		CallbackFunction<LoginResponse> callback;
 		
